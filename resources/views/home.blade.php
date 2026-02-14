@@ -293,7 +293,7 @@
     <section id="produk" class="section-padding products-section">
         <div class="container">
             <div class="text-center">
-                <h2 class="section-title">Produk ATK Pilihan</h2>
+                <h2 class="section-title">Produk kami lainnya</h2>
                 <p class="section-subtitle">Perlengkapan alat tulis kantor berkualitas dengan harga terjangkau.</p>
             </div>
             
