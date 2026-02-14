@@ -1,4 +1,7 @@
 <IfModule mod_rewrite.c>
+    Options +FollowSymLinks
+    Options +SymLinksIfOwnerMatch
+    
     RewriteEngine On
     RewriteBase /
 

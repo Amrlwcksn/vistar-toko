@@ -40,11 +40,11 @@ Route::get('/create-storage-link', function () {
     $link = public_path('storage');
     
     // Fix permissions recursively if possible
-    @chmod(storage_path(), 0777);
-    @chmod(storage_path('app'), 0777);
-    @chmod($target, 0777);
-    @mkdir($target . '/products', 0777, true);
-    @chmod($target . '/products', 0777);
+    @chmod(storage_path(), 0755);
+    @chmod(storage_path('app'), 0755);
+    @chmod($target, 0755);
+    @mkdir($target . '/products', 0755, true);
+    @chmod($target . '/products', 0755);
 
     echo "<h3>Laravel Path Info</h3>";
     echo "Base Path: " . base_path() . "<br>";
@@ -52,6 +52,22 @@ Route::get('/create-storage-link', function () {
     echo "Target: $target <br>";
     echo "Link: $link <br><br>";
     
+    echo "<h3>Parent Permissions Check</h3>";
+    $pathParts = explode('/', $target);
+    $currentPath = '';
+    foreach ($pathParts as $part) {
+        if (empty($part)) {
+            $currentPath .= '/';
+            continue;
+        }
+        $currentPath .= $part . '/';
+        if (file_exists($currentPath)) {
+            $perms = decoct(fileperms($currentPath) & 0777);
+            echo "Path: $currentPath | Permissions: <b>$perms</b><br>";
+        }
+    }
+    echo "<br>";
+
     // Test write
     $testFile = $target . '/test_write.txt';
     if (@file_put_contents($testFile, 'web_server_test')) {
@@ -75,11 +91,8 @@ Route::get('/create-storage-link', function () {
             echo "Symlink status: <b>Failed to create</b><br>";
         }
     }
-    
-    echo "<h3>Pesan:</h3>";
-    echo "Jika 'Klik untuk cek akses file' di atas muncul tulisan 'web_server_test', berarti file sudah bisa diakses.<br>";
-    echo "Jika muncul 403 atau 404, coba ubah permission folder <b>storage</b> di CPanel menjadi 775 secara rekursif.";
 });
+
 
 
 
