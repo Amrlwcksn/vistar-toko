@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Background circle -->
+  <circle cx="32" cy="32" r="32" fill="#1e40af"/>
+  
+  <!-- Sun rays (compass points) -->
+  <!-- North -->
+  <path d="M32 4 L34 14 L30 14 Z" fill="#fbbf24"/>
+  <!-- Northeast -->
+  <path d="M48 10 L46 18 L42 16 Z" fill="#f59e0b"/>
+  <!-- East -->
+  <path d="M60 32 L50 34 L50 30 Z" fill="#fbbf24"/>
+  <!-- Southeast -->
+  <path d="M48 54 L42 48 L46 46 Z" fill="#f59e0b"/>
+  <!-- South -->
+  <path d="M32 60 L30 50 L34 50 Z" fill="#fbbf24"/>
+  <!-- Southwest -->
+  <path d="M16 54 L18 46 L22 48 Z" fill="#f59e0b"/>
+  <!-- West -->
+  <path d="M4 32 L14 30 L14 34 Z" fill="#fbbf24"/>
+  <!-- Northwest -->
+  <path d="M16 10 L22 16 L18 18 Z" fill="#f59e0b"/>
+  
+  <!-- Center compass circle -->
+  <circle cx="32" cy="32" r="18" fill="#ffffff"/>
+  <circle cx="32" cy="32" r="16" fill="#1e40af"/>
+  
+  <!-- Compass needle -->
+  <!-- North pointer (red) -->
+  <path d="M32 16 L36 32 L32 30 L28 32 Z" fill="#dc2626"/>
+  <!-- South pointer (white) -->
+  <path d="M32 48 L28 32 L32 34 L36 32 Z" fill="#ffffff"/>
+  
+  <!-- Center dot -->
+  <circle cx="32" cy="32" r="3" fill="#fbbf24"/>
+  
+  <!-- Cardinal direction markers -->
+  <text x="32" y="12" font-family="Arial, sans-serif" font-size="6" font-weight="bold" fill="#ffffff" text-anchor="middle">N</text>
+</svg>
