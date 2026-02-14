@@ -39,14 +39,22 @@ Route::get('/create-storage-link', function () {
     $target = storage_path('app/public');
     $link = public_path('storage');
     
+    echo "Base Path: " . base_path() . "<br>";
+    echo "Public Path: " . public_path() . "<br>";
+    echo "Target: $target <br>";
+    echo "Link: $link <br><br>";
+    
     if (file_exists($link)) {
-        return "Link already exists at: $link";
+        if (is_link($link)) {
+            return "Link already exists (as symlink) at: $link";
+        }
+        return "ERROR: A physical folder or file already exists at: $link. Please delete or rename it first.";
     }
     
     if (symlink($target, $link)) {
         return "Storage link created successfully from $target to $link";
     }
     
-    return "Failed to create storage link.";
+    return "Failed to create storage link. Check folder permissions.";
 });
 

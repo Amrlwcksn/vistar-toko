@@ -10,6 +10,8 @@ return Application::configure(basePath: dirname(__DIR__))
         commands: __DIR__.'/../routes/console.php',
         health: '/up',
     )
+    ->usePublicPath(realpath(__DIR__.'/../../public_html') ?: realpath(__DIR__.'/../public'))
+
     ->withMiddleware(function (Middleware $middleware): void {
         //
     })
