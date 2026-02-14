@@ -39,22 +39,47 @@ Route::get('/create-storage-link', function () {
     $target = storage_path('app/public');
     $link = public_path('storage');
     
+    // Fix permissions recursively if possible
+    @chmod(storage_path(), 0777);
+    @chmod(storage_path('app'), 0777);
+    @chmod($target, 0777);
+    @mkdir($target . '/products', 0777, true);
+    @chmod($target . '/products', 0777);
+
+    echo "<h3>Laravel Path Info</h3>";
     echo "Base Path: " . base_path() . "<br>";
     echo "Public Path: " . public_path() . "<br>";
     echo "Target: $target <br>";
     echo "Link: $link <br><br>";
     
+    // Test write
+    $testFile = $target . '/test_write.txt';
+    if (@file_put_contents($testFile, 'web_server_test')) {
+        @chmod($testFile, 0644);
+        echo "Write Test: <b>SUCCESS</b> (Server can write to storage)<br>";
+        echo "Test URL: <a href='".asset('storage/test_write.txt')."' target='_blank'>Klik untuk cek akses file</a><br><br>";
+    } else {
+        echo "Write Test: <b>FAILED</b> (Permission issue on storage folder)<br><br>";
+    }
+
     if (file_exists($link)) {
         if (is_link($link)) {
-            return "Link already exists (as symlink) at: $link";
+            echo "Symlink status: <b>Valid</b><br>";
+        } else {
+            echo "Symlink status: <b>ERROR</b> (Physical folder exists instead of link)<br>";
         }
-        return "ERROR: A physical folder or file already exists at: $link. Please delete or rename it first.";
+    } else {
+        if (symlink($target, $link)) {
+            echo "Symlink status: <b>Created just now</b><br>";
+        } else {
+            echo "Symlink status: <b>Failed to create</b><br>";
+        }
     }
     
-    if (symlink($target, $link)) {
-        return "Storage link created successfully from $target to $link";
-    }
-    
-    return "Failed to create storage link. Check folder permissions.";
+    echo "<h3>Pesan:</h3>";
+    echo "Jika 'Klik untuk cek akses file' di atas muncul tulisan 'web_server_test', berarti file sudah bisa diakses.<br>";
+    echo "Jika muncul 403 atau 404, coba ubah permission folder <b>storage</b> di CPanel menjadi 775 secara rekursif.";
 });
+
+
 
