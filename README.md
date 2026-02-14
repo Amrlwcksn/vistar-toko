@@ -80,12 +80,3 @@ Ikuti langkah-langkah berikut untuk menjalankan project di lokal:
 - `resources/views/admin`: View untuk panel admin.
 - `public/favicon.svg`: Branding ikon kompas matahari.
 
-## 📞 Kontak
-
-**VistarToko**
-- **Alamat**: Jl. Curug Sewu, Semarang
-- **Jam Buka**: Setiap Hari
-- **WhatsApp**: [Lihat di aplikasi]
-
----
-© 2026 VistarToko. Semua hak dilindungi.
