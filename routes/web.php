@@ -33,3 +33,20 @@ Route::prefix('adminpanel')->name('admin.')->middleware('auth')->group(function 
     Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
     Route::put('/settings', [SettingController::class, 'update'])->name('settings.update');
 });
+
+// Utility route to create storage link on shared hosting
+Route::get('/create-storage-link', function () {
+    $target = storage_path('app/public');
+    $link = public_path('storage');
+    
+    if (file_exists($link)) {
+        return "Link already exists at: $link";
+    }
+    
+    if (symlink($target, $link)) {
+        return "Storage link created successfully from $target to $link";
+    }
+    
+    return "Failed to create storage link.";
+});
+
