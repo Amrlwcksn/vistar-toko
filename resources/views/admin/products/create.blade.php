@@ -3,7 +3,7 @@
 @section('content')
 <div class="header">
     <h2>Tambah Produk</h2>
-    <a href="{{ route('admin.products.index') }}" class="btn" style="background: #e2e8f0; color: var(--text-main);">Kembali</a>
+    <a href="{{ route('admin.products.index') }}" class="btn" style="background: #e2e8f0; color: var(--text-primary);">Kembali</a>
 </div>
 
 <div class="card" style="max-width: 800px;">

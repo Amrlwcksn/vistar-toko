@@ -11,8 +11,34 @@
     .pagination {
         margin-top: 1.5rem;
         display: flex;
+        list-style: none;
+        padding: 0;
+        gap: 0.25rem;
         justify-content: center;
-        gap: 0.5rem;
+    }
+    .pagination li .page-link {
+        padding: 0.5rem 0.875rem;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-sm);
+        text-decoration: none;
+        color: var(--text-primary);
+        font-size: 0.875rem;
+        transition: all 0.2s;
+        background: white;
+    }
+    .pagination li.active .page-link {
+        background: var(--primary);
+        color: white;
+        border-color: var(--primary);
+    }
+    .pagination li.disabled .page-link {
+        color: var(--text-muted);
+        cursor: not-allowed;
+        background: #f8fafc;
+    }
+    .pagination li:not(.active):not(.disabled) .page-link:hover {
+        background: var(--bg-body);
+        border-color: var(--primary-light);
     }
 </style>
 @endsection
