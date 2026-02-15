@@ -8,22 +8,48 @@
         margin-bottom: 1.5rem;
         max-width: 400px;
     }
+    /* Refined Pagination - Premium Aesthetics */
+    .pagination-wrapper {
+        margin-top: 2rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--border);
+    }
+    /* Hide the mobile-view part of Laravel's default Bootstrap 5 pagination */
+    .pagination-wrapper nav > div:first-child {
+        display: none;
+    }
+    /* Show and style the desktop/main container */
+    .pagination-wrapper nav > div:last-child {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        width: 100%;
+    }
+    
+    /* Style the "Showing X to Y of Z results" text from the desktop container */
+    .pagination-wrapper nav > div:last-child > div:first-child p {
+        margin: 0;
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+        font-weight: 500;
+    }
+    
     .pagination {
         display: flex;
         list-style: none;
         padding: 0;
+        margin: 0;
         gap: 0.5rem;
-        justify-content: center;
-        margin-top: 2rem;
     }
+    
     .pagination li .page-link {
         display: flex;
         align-items: center;
         justify-content: center;
         min-width: 40px;
-        width: auto;
         height: 40px;
-        padding: 0 0.75rem;
+        padding: 0 0.875rem;
         background: white;
         border: 1px solid var(--border);
         border-radius: var(--radius-md);
@@ -40,17 +66,23 @@
         border-color: transparent;
         box-shadow: 0 4px 12px rgba(30, 64, 175, 0.25);
     }
+    .pagination li.disabled .page-link {
+        opacity: 0.5;
+        cursor: not-allowed;
+        background: var(--bg-body);
+        box-shadow: none;
+    }
     .pagination li:not(.active):not(.disabled) .page-link:hover {
         border-color: var(--primary-light);
         color: var(--primary);
         transform: translateY(-2px);
         box-shadow: var(--shadow-md);
     }
-    .pagination li.disabled .page-link {
-        opacity: 0.5;
-        cursor: not-allowed;
-        background: var(--bg-body);
-        box-shadow: none;
+    
+    /* Ensure the "Showing..." part is visible and pretty */
+    .pagination-wrapper .small, .pagination-wrapper .text-muted {
+        font-size: 0.875rem;
+        color: var(--text-secondary) !important;
     }
 </style>
 @endsection
@@ -135,7 +167,7 @@
     </div>
 
     @if($products->hasPages())
-        <div class="pagination">
+        <div class="pagination-wrapper">
             {{ $products->links() }}
         </div>
     @endif
