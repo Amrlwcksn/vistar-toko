@@ -142,6 +142,11 @@
             background: var(--primary-light);
             border-radius: 0 2px 2px 0;
         }
+
+        .nav-link.logout-link:hover {
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+        }
         
         .icon { width: 20px; height: 20px; stroke-width: 2; stroke: currentColor; fill: none; }
 
@@ -415,13 +420,13 @@
                     <p>Toko Manager</p>
                 </div>
             </div>
-            <form action="{{ route('logout') }}" method="POST">
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf
-                <button type="submit" class="nav-link" style="width: 100%; background: none; border: none; cursor: pointer; color: rgba(255, 255, 255, 0.8);">
-                    <svg class="icon" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
-                    Logout
-                </button>
             </form>
+            <a href="#" class="nav-link logout-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                <svg class="icon" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+                Logout
+            </a>
         </div>
     </div>
 

@@ -298,7 +298,7 @@
             </div>
             
             <div class="product-grid">
-                @foreach($products->take(8) as $product)
+                @foreach($products->take(4) as $product)
                 <div class="product-card">
                     <img src="{{ $product->image_url ?? 'https://via.placeholder.com/220x200/eff6ff/1e40af?text='.urlencode($product->name) }}" alt="{{ $product->name }}" class="product-img">
                     <div class="product-body">
