@@ -21,8 +21,9 @@
         align-items: center;
         justify-content: center;
         min-width: 40px;
+        width: auto;
         height: 40px;
-        padding: 0 0.5rem;
+        padding: 0 0.75rem;
         background: white;
         border: 1px solid var(--border);
         border-radius: var(--radius-md);
@@ -71,7 +72,10 @@
         <input type="text" name="search" placeholder="Cari nama produk atau kategori..." value="{{ request('search') }}" style="flex: 1;">
         <button type="submit" class="btn btn-secondary">Cari</button>
         @if(request('search'))
-            <a href="{{ route('admin.products.index') }}" class="btn btn-secondary" style="background: #f1f5f9;">Reset</a>
+            <a href="{{ route('admin.products.index') }}" class="btn btn-secondary">
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"/></svg>
+                Reset
+            </a>
         @endif
     </form>
 

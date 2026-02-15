@@ -3,7 +3,10 @@
 @section('content')
 <div class="header">
     <h2>Tambah Produk</h2>
-    <a href="{{ route('admin.products.index') }}" class="btn" style="background: #e2e8f0; color: var(--text-primary);">Kembali</a>
+    <a href="{{ route('admin.products.index') }}" class="btn btn-secondary">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"/></svg>
+        Kembali
+    </a>
 </div>
 
 <div class="card" style="max-width: 800px;">
