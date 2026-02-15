@@ -292,6 +292,50 @@
             max-width: 100%;
         }
     }
+    /* Pagination - Premium Aesthetics */
+    .pagination {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        gap: 0.5rem;
+        justify-content: center;
+        margin-top: 2.5rem;
+    }
+    .pagination li .page-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 44px;
+        height: 44px;
+        padding: 0 0.5rem;
+        background: white;
+        border: 1px solid var(--border-light);
+        border-radius: var(--radius-md);
+        color: var(--text-secondary);
+        font-weight: 600;
+        font-size: 0.9375rem;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        text-decoration: none;
+        box-shadow: var(--shadow-sm);
+    }
+    .pagination li.active .page-link {
+        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        color: white !important;
+        border-color: transparent;
+        box-shadow: 0 4px 12px rgba(30, 64, 175, 0.25);
+    }
+    .pagination li:not(.active):not(.disabled) .page-link:hover {
+        border-color: var(--primary);
+        color: var(--primary);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+    }
+    .pagination li.disabled .page-link {
+        opacity: 0.5;
+        cursor: not-allowed;
+        background: var(--bg-secondary);
+        box-shadow: none;
+    }
 </style>
 @endsection
 
